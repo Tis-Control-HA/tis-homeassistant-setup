@@ -4,9 +4,9 @@
 HOMEASSISTANT_CONFIG="/config"
 ADDONS_DIR="/addons"
 CUSTOM_COMPONENTS_DIR="${HOMEASSISTANT_CONFIG}/custom_components"
-INTEGRATION_REPO_URL="https://github.com/Tis-Control-HA/tis_integration"
+INTEGRATION_REPO_URL="https://github.com/KarimTIS/tis_integration"
 INTEGRATION_REPO_NAME="tis_integration"
-ADDON_REPO_URL="https://github.com/Tis-Control-HA/tis-addon"
+ADDON_REPO_URL="https://github.com/KarimTIS/tis_addon"
 ADDON_REPO_NAME="home-assistant-addon"
 
 # Function to install a package if not already installed
@@ -48,8 +48,8 @@ check_error "Failed to update the system."
 echo "Checking required packages..."
 install_if_missing git
 check_error "Failed to install Git."
-install_if_missing p7zip-full
-check_error "Failed to install 7z."
+# install_if_missing p7zip-full
+# check_error "Failed to install 7z."
 
 # Ensure custom_components folder exists
 echo "Ensuring custom_components folder exists..."
@@ -104,11 +104,11 @@ else
     check_error "Failed to update the addon repository."
 fi
 
-# Extract the multipart archive
-echo "Extracting laravel_2.zip.001..."
-7z x -y laravel_2.zip.001
-check_error "Failed to extract laravel_2.zip.001."
+# # Extract the multipart archive
+# echo "Extracting laravel_2.zip.001..."
+# 7z x -y laravel_2.zip.001
+# check_error "Failed to extract laravel_2.zip.001."
 
-echo "Deleting laravel_2.zip.* files..."
-rm laravel_2.zip.*
+# echo "Deleting laravel_2.zip.* files..."
+# rm laravel_2.zip.*
 echo "Installation of integration and addon completed successfully!"
