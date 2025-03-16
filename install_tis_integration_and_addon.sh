@@ -44,12 +44,13 @@ echo "Updating system package list..."
 sudo apt-get update
 check_error "Failed to update the system."
 
-# Check and install other required packages
+# Check and install required packages (Git & Git LFS)
 echo "Checking required packages..."
 install_if_missing git
 check_error "Failed to install Git."
-# install_if_missing p7zip-full
-# check_error "Failed to install 7z."
+
+install_if_missing git-lfs
+check_error "Failed to install Git LFS."
 
 # Ensure custom_components folder exists
 echo "Ensuring custom_components folder exists..."
@@ -68,6 +69,7 @@ if [ ! -d "$INTEGRATION_REPO_NAME" ]; then
     echo "Cloning the integration repository..."
     git clone --depth 1 "$INTEGRATION_REPO_URL"
     check_error "Failed to clone the integration repository."
+    cd "$INTEGRATION_REPO_NAME" || exit
 else
     echo "Integration repository already exists. Resetting to the latest commit..."
     cd "$INTEGRATION_REPO_NAME" || exit
@@ -76,6 +78,11 @@ else
     git pull
     check_error "Failed to update the integration repository."
 fi
+
+# Install and pull Git LFS files
+git lfs install
+git lfs pull
+check_error "Failed to pull Git LFS files."
 
 # Ensure addons folder exists
 echo "Ensuring addons folder exists..."
@@ -104,11 +111,9 @@ else
     check_error "Failed to update the addon repository."
 fi
 
-# # Extract the archive
-# echo "Extracting laravel_2.zip..."
-# 7z x -y laravel_2.zip
-# check_error "Failed to extract laravel_2.zip."
+# Install and pull Git LFS files for the addon repo
+git lfs install
+git lfs pull
+check_error "Failed to pull Git LFS files in the addon repository."
 
-# echo "Deleting laravel_2.zip file..."
-# rm laravel_2.zip
 echo "Installation of integration and addon completed successfully!"
