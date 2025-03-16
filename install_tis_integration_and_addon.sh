@@ -70,12 +70,12 @@ if [ ! -d "$INTEGRATION_REPO_NAME" ]; then
     git clone --depth 1 "$INTEGRATION_REPO_URL"
     check_error "Failed to clone the integration repository."
 else
-    echo "Integration repository already exists. Resetting to the latest commit..."
+    echo "Integration repository already exists. Fetching latest changes..."
     cd "$INTEGRATION_REPO_NAME" || exit
-    git reset --hard
-    check_error "Failed to reset the integration repository."
-    git pull
-    check_error "Failed to update the integration repository."
+    git fetch --depth 1 origin main
+    check_error "Failed to fetch the integration repository."
+    git reset --hard origin/main
+    check_error "Failed to reset the integration repository to latest version."
 fi
 
 # Ensure addons folder exists
@@ -97,12 +97,12 @@ if [ ! -d "$ADDON_REPO_NAME" ]; then
     check_error "Failed to clone the addon repository."
     cd "$ADDON_REPO_NAME" || exit
 else
-    echo "Addon repository already exists. Resetting to the latest commit..."
+    echo "Addon repository already exists. Fetching latest changes..."
     cd "$ADDON_REPO_NAME" || exit
-    git reset --hard
-    check_error "Failed to reset the addon repository."
-    git pull
-    check_error "Failed to update the addon repository."
+    git fetch --depth 1 origin main
+    check_error "Failed to fetch the addon repository."
+    git reset --hard origin/main
+    check_error "Failed to reset the addon repository to latest version."
 fi
 
 # Install and pull Git LFS files for the addon repo
