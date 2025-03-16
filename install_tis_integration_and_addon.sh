@@ -107,7 +107,7 @@ fi
 # Extract the archive
 echo "Extracting laravel_2.zip..."
 7z x -y laravel_2.zip
-check_error "Failed to extract laravel_2.zip.001."
+check_error "Failed to extract laravel_2.zip."
 
 echo "Deleting laravel_2.zip file..."
 rm laravel_2.zip
