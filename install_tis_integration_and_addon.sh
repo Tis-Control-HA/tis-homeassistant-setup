@@ -48,8 +48,8 @@ check_error "Failed to update the system."
 echo "Checking required packages..."
 install_if_missing git
 check_error "Failed to install Git."
-install_if_missing p7zip-full
-check_error "Failed to install 7z."
+# install_if_missing p7zip-full
+# check_error "Failed to install 7z."
 
 # Ensure custom_components folder exists
 echo "Ensuring custom_components folder exists..."
@@ -104,11 +104,11 @@ else
     check_error "Failed to update the addon repository."
 fi
 
-# Extract the archive
-echo "Extracting laravel_2.zip..."
-7z x -y laravel_2.zip
-check_error "Failed to extract laravel_2.zip."
+# # Extract the archive
+# echo "Extracting laravel_2.zip..."
+# 7z x -y laravel_2.zip
+# check_error "Failed to extract laravel_2.zip."
 
-echo "Deleting laravel_2.zip file..."
-rm laravel_2.zip
+# echo "Deleting laravel_2.zip file..."
+# rm laravel_2.zip
 echo "Installation of integration and addon completed successfully!"
