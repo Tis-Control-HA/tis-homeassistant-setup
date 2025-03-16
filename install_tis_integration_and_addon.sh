@@ -4,9 +4,9 @@
 HOMEASSISTANT_CONFIG="/config"
 ADDONS_DIR="/addons"
 CUSTOM_COMPONENTS_DIR="${HOMEASSISTANT_CONFIG}/custom_components"
-INTEGRATION_REPO_URL="https://github.com/KarimTIS/tis_integration"
+INTEGRATION_REPO_URL="https://github.com/Tis-Control-HA/tis_integration"
 INTEGRATION_REPO_NAME="tis_integration"
-ADDON_REPO_URL="https://github.com/KarimTIS/tis_addon"
+ADDON_REPO_URL="https://github.com/Tis-Control-HA/tis-addon"
 ADDON_REPO_NAME="home-assistant-addon"
 
 # Function to install a package if not already installed
