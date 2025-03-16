@@ -69,7 +69,6 @@ if [ ! -d "$INTEGRATION_REPO_NAME" ]; then
     echo "Cloning the integration repository..."
     git clone --depth 1 "$INTEGRATION_REPO_URL"
     check_error "Failed to clone the integration repository."
-    cd "$INTEGRATION_REPO_NAME" || exit
 else
     echo "Integration repository already exists. Resetting to the latest commit..."
     cd "$INTEGRATION_REPO_NAME" || exit
@@ -78,11 +77,6 @@ else
     git pull
     check_error "Failed to update the integration repository."
 fi
-
-# Install and pull Git LFS files
-git lfs install
-git lfs pull
-check_error "Failed to pull Git LFS files."
 
 # Ensure addons folder exists
 echo "Ensuring addons folder exists..."
